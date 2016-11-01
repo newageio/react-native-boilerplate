@@ -13,7 +13,7 @@ class ArticlesScene extends Component {
   render() {
     const { root: { articles: { edges: articles } } } = this.props;
     return (
-      <View style={{ paddingTop: 100 }}>
+      <View style={{ paddingTop: 70, paddingLeft: 10 }}>
         { articles.map(article => <Article key={ article.node.id } article={ article.node }/>) }
       </View>
     );

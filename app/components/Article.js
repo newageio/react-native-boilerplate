@@ -10,8 +10,10 @@ import CommentsList from './CommentsList';
 function Article({ article }) {
   return(
     <View>
-      <Text>{ article.title }</Text>
-      <Text>{ article.text }</Text>
+      <View style={{ alignItems: 'center' }}>
+        <Text style={{ fontSize: 16 }}>{ article.title }</Text>
+      </View>
+      <Text style={{ fontSize: 14, paddingBottom: 10 }}>{ article.text }</Text>
       <CommentsList article={ article } />
     </View>
   );

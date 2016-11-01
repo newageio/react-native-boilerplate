@@ -8,7 +8,7 @@ import {
 function Comment({ comment }) {
   return(
     <View>
-      <Text>{ comment.text }</Text>
+      <Text style={{ fontSize: 12 }}>{ comment.text }</Text>
     </View>
   );
 }
@@ -23,7 +23,7 @@ export default createContainer(Comment, {
   fragments: {
     comment: () => Relay.QL`
       fragment on Comment {
-        text   
+        text
       }
     `
   },
