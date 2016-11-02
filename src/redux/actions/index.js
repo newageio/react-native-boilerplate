@@ -1,9 +1,10 @@
 import { CALL_API } from 'redux-api-middleware'
+import config from '../../config/default';
 
 export const TOGGLE = 'toggle';
 
-export const REGISTARTION_REQUEST = 'registration_req';
-export const REGISTARTION_SUCCESS = 'reg_succ';
+export const REGISTRATION_REQUEST = 'registration_req';
+export const REGISTRATION_SUCCESS = 'reg_succ';
 export const REGISTRATION_FAILURE = 'reg_fail';
 
 export const LOGIN_REQUEST = 'login_req';
@@ -16,19 +17,17 @@ export function toggle() {
   };
 }
 
-const API_URL = 'http://localhost:3000';
-
 export function register(credentials) {
   return {
     [CALL_API]: {
-      endpoint: `${API_URL}/registration`,
+      endpoint: `${config.apiUrl}/registration`,
       method: 'POST',
       types: [
         {
-          type: REGISTARTION_REQUEST,
+          type: REGISTRATION_REQUEST,
           payload: (action, state) => JSON.parse(action[CALL_API].body),
         },
-        REGISTARTION_SUCCESS,
+        REGISTRATION_SUCCESS,
         REGISTRATION_FAILURE,
       ],
       headers: { 'Content-Type': 'application/json' },
@@ -40,7 +39,7 @@ export function register(credentials) {
 export function login(credentials) {
   return {
     [CALL_API]: {
-      endpoint: `${API_URL}/login`,
+      endpoint: `${config.apiUrl}/login`,
       method: 'POST',
       types: [
         {

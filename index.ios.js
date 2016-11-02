@@ -5,25 +5,25 @@
  */
 
 import React, { Component } from 'react';
-import Relay, { RootContainer } from 'react-relay';
+import { RootContainer } from 'react-relay';
 import { Provider } from 'react-redux';
 import {
   AppRegistry,
   NavigatorIOS,
 } from 'react-native';
-import ReduxScene from './app/components/ReduxScene';
-import GraphQLSceneContainer from './app/containers/GraphQLSceneContainer';
-import store from './app/store';
+import ReduxScene from './src/redux/components/ReduxScene';
+import GraphQLSceneContainer from './src/redux/containers/GraphQLSceneContainer';
+import store from './src/redux/store';
 
 export default class test extends Component {
 
   goHome = () => {
+    console.log('going home');
     const { navigator } = this.refs;
-    navigator.replaceAtIndex({
+    navigator.replace({
       component: GraphQLSceneContainer,
       title: 'Home',
-    }, 0);
-    navigator.popToTop();
+    });
   };
 
   render() {

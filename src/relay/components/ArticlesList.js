@@ -9,8 +9,9 @@ import Relay, {
 
 import Article from './Article';
 
-class ArticlesScene extends Component {
+class ArticlesList extends Component {
   render() {
+    console.log('render articles list');
     const { root: { articles: { edges: articles } } } = this.props;
     return (
       <View style={{ paddingTop: 70, paddingLeft: 10 }}>
@@ -20,7 +21,7 @@ class ArticlesScene extends Component {
   }
 }
 
-export default createContainer(ArticlesScene, {
+export default createContainer(ArticlesList, {
   initialVariables: {
     perPage: 10,
   },

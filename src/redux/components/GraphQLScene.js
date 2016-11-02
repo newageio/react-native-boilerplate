@@ -7,13 +7,13 @@ import {
   Text,
 } from 'react-native';
 
-import ArticlesScene from './ArticlesScene';
-import AppHomeRoute from '../routes/AppHomeRoute';
-import config from '../../config';
+import ArticlesScene from '../../relay/components/ArticlesList';
+import AppHomeRoute from '../../relay/routes/AppHomeRoute';
+import config from '../../config/default';
 import {
   init as initNetwork,
   // setToken as setNetworkToken
-} from '../helpers/network';
+} from '../../helpers/network';
 
 
 
@@ -33,10 +33,14 @@ class GraphQLScene extends Component {
   }
 
   render() {
+    console.log('render root');
     return (
       <RootContainer
         Component={ ArticlesScene }
         route={new AppHomeRoute()}
+        renderLoading={ () => {
+          return <View style={{ paddingTop: 70 }}><Text>I am loading</Text></View>;
+        }}
       />
     );
   }

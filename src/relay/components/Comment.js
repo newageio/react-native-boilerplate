@@ -8,7 +8,7 @@ import {
 function Comment({ comment }) {
   return(
     <View>
-      <Text style={{ fontSize: 12 }}>{ comment.text }</Text>
+      <Text style={{ fontSize: 12 }}>{ comment.text } ( { comment.user.email } )</Text>
     </View>
   );
 }
@@ -16,6 +16,9 @@ function Comment({ comment }) {
 Comment.propTypes = {
   comment: PropTypes.shape({
     text: PropTypes.string.isRequired,
+    user: PropTypes.shape({
+      email: PropTypes.string.isRequired,
+    })
   })
 };
 
@@ -23,7 +26,10 @@ export default createContainer(Comment, {
   fragments: {
     comment: () => Relay.QL`
       fragment on Comment {
-        text
+        text,
+        user {
+          email
+        }
       }
     `
   },
